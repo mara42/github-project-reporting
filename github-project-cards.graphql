@@ -1,0 +1,43 @@
+{
+  repository(owner:"{{user}}", name:"{{repo}}") {
+    projects(first: 1) {
+      edges {
+        node {
+          columns(last: 20) {
+            edges {
+              node {
+                name
+                cards(archivedStates: [NOT_ARCHIVED]) {
+                  edges {
+                    node {
+                      content {
+                        ... on Issue {
+                          title
+                          labels(first: 20) {
+                            edges {
+                              node {
+                                name
+                              }
+                            }
+                          }
+                          assignees(first: 10) {
+                            edges {
+                              node {
+                                login
+                              }
+                            }
+                          }
+                          bodyText
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
